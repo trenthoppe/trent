@@ -10,6 +10,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy-production": "scp -r ./build/* thoppe@157.230.56.200:/var/www/trenthoppe.com/html",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
