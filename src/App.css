@@ -12,3 +12,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.App-body {
+  background-color: #282c34;
+  width: auto;
+  height: auto;
+}
+
