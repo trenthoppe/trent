@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+
 import './App.css';
 
-import AlbumList from './components/AlbumList/AlbumList'
+import AlbumList from './components/AlbumList/AlbumList';
 import NewAlbum from './components/NewAlbum/NewAlbum';
+import Users from './user/pages/Users';
+import NewPlace from './places/pages/NewPlace';
 
 function App() {
   const [albums, setAlbums] = useState([
@@ -16,15 +20,17 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Hello friend! Hang tight, updates are coming soon.
-        </p>
-      </header>
-      <NewAlbum onAddAlbum={addNewAlbumHandler}/>
-      <AlbumList albums={albums}/>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <Users />
+        </Route>
+        <Route path="/places/new" exact>
+          <NewPlace />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
+    </Router>
   );
 }
 
