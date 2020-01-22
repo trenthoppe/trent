@@ -5,8 +5,9 @@ import './App.css';
 
 import AlbumList from './components/AlbumList/AlbumList';
 import NewAlbum from './components/NewAlbum/NewAlbum';
-import Users from './user/pages/Users';
 import NewPlace from './places/pages/NewPlace';
+import MainNavigation from './shared/components/Navigation/MainNavigation'
+import Users from './user/pages/Users';
 
 function App() {
   const [albums, setAlbums] = useState([
@@ -21,15 +22,18 @@ function App() {
 
   return (
     <Router>
-      <Switch>
-        <Route path="/" exact>
-          <Users />
-        </Route>
-        <Route path="/places/new" exact>
-          <NewPlace />
-        </Route>
-        <Redirect to="/" />
-      </Switch>
+      <MainNavigation />
+      <main>
+        <Switch>
+          <Route path="/" exact>
+            <Users />
+          </Route>
+          <Route path="/places/new" exact>
+            <NewPlace />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+      </main>
     </Router>
   );
 }
