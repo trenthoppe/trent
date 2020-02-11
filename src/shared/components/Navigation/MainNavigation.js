@@ -19,6 +19,8 @@ const MainNavigation = () => {
         setDrawerIsOpen(false);
     }
 
+    
+
     return (
         <React.Fragment>
             {drawerIsOpen && (<BackDrop onClick={closeDrawerHandler} />)}
