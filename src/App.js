@@ -3,29 +3,23 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 
 import './App.css';
 
-import AlbumList from './components/AlbumList/AlbumList';
-import NewAlbum from './components/NewAlbum/NewAlbum';
-import NewPlace from './places/pages/NewPlace';
-import MainNavigation from './shared/components/Navigation/MainNavigation'
-import RunawayResume from './landing/pages/RunawayResume';
-import UserPlaces from './places/pages/UserPlaces';
-import Users from './user/pages/Users';
+// Landing
+import RunawayResume from './landing/runawayResume/pages/RunawayResume';
+import InfiniteHexGrid from './landing/infiniteHex/pages/InfiniteHexGrid';
+
+// Learn React
+import NewPlace from './learnReact/places/pages/NewPlace';
+import MainNavigation from './learnReact/shared/components/Navigation/MainNavigation'
+import UserPlaces from './learnReact/places/pages/UserPlaces';
+import Users from './learnReact/user/pages/Users';
 
 function App() {
-  const [albums, setAlbums] = useState([
-      {id: 1, name: "Album 1"},
-      {id: 2, name: "Album 2"},
-      {id: 3, name: "Album 3"}
-  ]);
-
-  const addNewAlbumHandler = newAlbum => {
-    setAlbums(prevAlbums => prevAlbums.concat(newAlbum));
-  };
 
   const LandingContainer = () => (
     <React.Fragment>
-      <Route path="/" render={() => <Redirect to="/resume" />}/>
-      <Route path="/resume" component={RunawayResume} />
+        <Route path="/" render={() => <Redirect to="/hex" />}/>
+        <Route path="/resume" component={RunawayResume} />
+        <Route path="/hex" component={InfiniteHexGrid} />
     </React.Fragment>
   );
 

@@ -33,7 +33,6 @@ const Sketch = p5 => {
 };
 
 const Canvas = props => {
-
     
     return <P5Wrapper sketch={Sketch} rotation={200}></P5Wrapper>
 }
