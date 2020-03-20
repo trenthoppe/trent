@@ -1,21 +1,26 @@
 import React from 'react'
 import { Hexagon, Text } from 'react-hexgrid';
+import { MdBook } from 'react-icons/md';
 
 import './HexTile.css';
 
-const HexTile = props => {
+const HexTile = ({id, q, r, s, name, icon})  => {
+    
+    const stateNameAndBusiness = () => {
+        console.log(id);
+    };
 
     return (
-        <div className="hex-tile">
-            <div className="flipper">
-                <Hexagon className="front" key={props.id} q={props.q} r={props.r} s={props.s}>
-                    <Text>{"Front"}</Text>
-                </Hexagon>
-                <Hexagon className="back" key={props.id+10} q={props.q} r={props.r} s={props.s}>
-                    <Text>{"Back"}</Text>
-                </Hexagon>
-            </div>
-        </div>
+        <Hexagon 
+            className="hex-tile" 
+            key={id} 
+            q={q} 
+            r={r} 
+            s={s}
+            onClick={stateNameAndBusiness}>
+            <MdBook className="icon" color={"white"} size={5} />
+            <Text>{name}</Text>
+        </Hexagon>
     );
 }
 

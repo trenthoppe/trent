@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useState }  from 'react';
 import { HexGrid, Layout, GridGenerator } from 'react-hexgrid';
 
 import HexTile from './HexTile';
+import titleContent from '../shared/Content';
 
 import './GridContainer.css';
 
@@ -27,7 +28,17 @@ const GridContainer = () => {
             <Layout 
                 size={{ x: 15, y: 15 }}
                 spacing={1.1}>
-                { hexagons.map((hex, i) => <HexTile key={i} id={i} q={hex.q} r={hex.r} s={hex.s} />) }
+                { hexagons.map((hex, i) => 
+                    <HexTile 
+                        key={i} 
+                        id={i} 
+                        q={hex.q} 
+                        r={hex.r} 
+                        s={hex.s} 
+                        name={titleContent[i].name}
+                        icon={titleContent[i].icon}
+                        />
+                )}
             </Layout>
         </HexGrid>
     );

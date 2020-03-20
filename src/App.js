@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import './App.css';
@@ -12,14 +12,16 @@ import NewPlace from './learnReact/places/pages/NewPlace';
 import MainNavigation from './learnReact/shared/components/Navigation/MainNavigation'
 import UserPlaces from './learnReact/places/pages/UserPlaces';
 import Users from './learnReact/user/pages/Users';
+import Trent from './landing/trent/pages/Trent';
 
 function App() {
 
   const LandingContainer = () => (
     <React.Fragment>
-        <Route path="/" render={() => <Redirect to="/hex" />}/>
+        <Route path="/" component={Trent} />
         <Route path="/resume" component={RunawayResume} />
         <Route path="/hex" component={InfiniteHexGrid} />
+        <Redirect to="/" />
     </React.Fragment>
   );
 

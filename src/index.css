@@ -4,11 +4,17 @@
   box-sizing: border-box;
 }
 
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
 html {
   font-family: 'Open Sans', sans-serif;
 }
 
 body {
+  height: 100%;
   margin: 0;
   background: antiquewhite;
 }
@@ -39,4 +45,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@font-face {
+  font-family: 'Airbnb Cereal App Book';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Airbnb Cereal App Book'), url('./assets/fonts/AirbnbCerealBook.woff') format('woff');
 }

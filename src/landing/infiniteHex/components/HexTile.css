@@ -4,9 +4,11 @@
 
 .hex-tile text {
     font-size: 0.22em;
-  fill: white;
-  fill-opacity: 0.7;
-  transition: fill-opacity .5s;
+  	fill: white;
+}
+
+.hex-tile .icon {
+	fill: red;
 }
 
 .hex-tile:hover .flipper {
