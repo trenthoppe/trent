@@ -1,5 +1,5 @@
 // React
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // Material UI
 import GridList from '@material-ui/core/GridList';
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,9 +7,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useTrail } from 'react-spring';
 // Internal
 import AdaptiveCard from './AdaptiveCard';
-// Content
-import kitten from '../../../assets/images/kitten.jpg';
-import kittens from '../../../assets/images/kittens.jpg';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -33,13 +30,9 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-
-
-const tileData = [0,1,2,3,4,5,6,7,8,9,10,11,12,13];
-
 const Collection = ({items}) => {
     const styles = useStyles();
-    const trail = useTrail(items.length, {
+    const trailAnimation = {
         from: { 
             opacity: 0, 
             transform: 'scale(0)'
@@ -47,8 +40,24 @@ const Collection = ({items}) => {
         to: {
             opacity: 1,
             transform: 'scale(1)'
+        },
+        reset: true
+    };
+
+    const [trail, set, stop] = useTrail(items.length, () => (trailAnimation)); 
+
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+        if (mounted) {
+            set(trailAnimation);
         }
-    }); 
+        
+        return () => { 
+            stop();
+            setMounted(false);
+        };
+    }, [items]);
 
     return (
         <div className={styles.root}>
@@ -56,9 +65,8 @@ const Collection = ({items}) => {
                 cellHeight={160} 
                 className={styles.gridList} 
                 cols={4}>
-                {console.log(items)}
                 {trail.map(({...rest}, index) => (
-                    <AdaptiveCard key={index} item={items[index]} enterAnimation={{...rest}}/>
+                    <AdaptiveCard key={parseInt(Math.random() * 1000)} item={items[index]} enterAnimation={{...rest}}/>
                 ))}
             </GridList>
         </div>

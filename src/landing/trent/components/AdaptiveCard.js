@@ -25,6 +25,8 @@ const useStyles = makeStyles(theme => ({
   },
   img: {
     maxHeight: '100%',
+    maxWidth: '100%',
+    objectFit: 'contain'
   }, 
   tileBar: {
     textAlign: 'center'
@@ -74,11 +76,14 @@ const AdaptiveCard = ({item, enterAnimation}) => {
             opacity: op.interpolate(op => op)
           }}
           >
-          <GridListTileBar
+          {
+            hovering &&
+            <GridListTileBar
             className={styles.tileBar}
             title={item.title}
             subtitle={item.subtitle} 
           />
+          }  
         </animated.div>
     </GridListTile>
   );
